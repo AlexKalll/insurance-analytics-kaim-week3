@@ -1,23 +1,19 @@
 
 
-```markdown
-# Insurance Analytics | ML
+
+# Insurance Analytics | Machine Learning Project
 
 ## 📘 Project Overview
 
 This project focuses on analyzing and modeling insurance policy and claim data for risk evaluation and premium optimization. The dataset comprises over 1 million rows from an insurance portfolio with features including vehicle characteristics, policy details, and financials (claims, premiums). The goal is to explore risk drivers and build predictive models for smarter pricing and segmentation.
-
+- Generally, This project investigates patterns of risk and profitability in a large insurance dataset. We aim to understand customer segments, risk factors, and develop data-driven pricing strategies using EDA, hypothesis testing, and predictive modeling.
 ---
-
 ## 🏗️ Project Setup
-
 ### Repo Structure
-We follow a modular and professional structure with the following main directories:
-
-```
 
 insurance-analytics-kaim-week3/
 ├── src/
+├── figures/
 ├── scripts/
 ├── notebooks/
 ├── data/
@@ -25,63 +21,99 @@ insurance-analytics-kaim-week3/
 │   └── processed/
 ├── tests/
 ├── .github/workflows/
-├── .vscode/
 ├── config/
-├── readme.md
+├── README
 ├── requirements.txt
 ├── .gitignore
-├── .vscode
 
-
-### Tech Stack
+### Tech Stack - Tools Used
 - Python 3.11+
 - Pandas, NumPy, Seaborn, Matplotlib
 - Scikit-learn, XGBoost, LIME
 - DVC (for data versioning)
 - PyTest (for testing)
 - GitHub Actions (CI/CD)
-
 ---
 
-## 📊 Exploratory Data Analysis 
+### ✅ GitHub Setup
+- Created a structured GitHub repository with modular code organization.
+- Set up CI/CD using GitHub Actions.
+- Installed all project dependencies and documented them in `requirements.txt`.
+
+### ✅ Exploratory Data Analysis (EDA)
 
 The dataset contains 1,000,098 rows and 52 columns. The main steps completed include:
 
 ### 🔹 Data Structure Review
-- 15 numerical columns (e.g., `TotalPremium`, `TotalClaims`, `CustomValueEstimate`)
+- 15 numerical columns (e.g., `TotalPremium`, `TotalClaims`, `CustomValueEstimate`) - 11 floats and 4 integers.
 - 36 categorical columns (e.g., `Province`, `VehicleType`, `Gender`)
 - 1 boolean column
 
 ### 🔹 Missing Data
+Heere are missed number of rows for each columns:
+| Column                  | Missing Rows | % Missing |
+| ----------------------- | ------------ | --------- |
+| NumberOfVehiclesInFleet | 1,000,098    | 100%      |
+| CustomValueEstimate     | 779,642      | 77.9%     |
+| CrossBorder             | 999,400      | \~99.9%   |
+| Gender                  | 9,536        | 0.95%     |
+| MaritalStatus           | 8,259        | 0.83%     |
+
+  Note: Columns with larger nulls are reviewed for relevance.
 - Significant nulls found in:
   - `NumberOfVehiclesInFleet` (100%)
   - `CustomValueEstimate` (77%)
   - Vehicle metadata (`make`, `Model`, `bodytype`, etc.) — ~552 rows missing
 
-### 🔹 Key Metrics
-- Summary statistics calculated for premium and claims columns
-- Loss Ratio metric to be explored in relation to Province, Gender, VehicleType
-- Placeholder for visualizations:
-  - ![Distribution of Total Premiums](<add_path>)
-  - ![Claims by Province](<add_path>)
-  - ![Loss Ratio by Vehicle Type](<add_path>)
+#### 📊 Descriptive Statistics
+- Generated summary statistics for numerical columns.
+- Reviewed data types for formatting and conversion.
+- Created histograms and bar plots for key financial and categorical variables.
+- Assessed missing values and outliers in columns like `TotalClaims`, `CustomValueEstimate`, and `TotalPremium`.
+
+#### 📈 Visual EDA
+- Histograms for numerical distributions (e.g., `TotalPremium`, `TotalClaims`).
+- Bar plots for key categoricals (e.g., `Province`, `Gender`, `CoverType`).
+- Box plots for identifying outliers in premium and claims.
+
+#### 🔁 Loss Ratio Analysis
+- Computed overall loss ratio = `TotalClaims / TotalPremium`.
+- Grouped and compared by Province, Gender, and VehicleType.
+- Insight: Loss ratio significantly varies across locations and demographics. e.g Loss Ratio by Province
+![Loss Ratio by Province](figures/loss_ratio_Province.png)
+
+#### 📉 Multivariate Analysis and 🗺️ Geographic Comparison
+- Correlation matrix between numerical features (e.g., `TotalClaims`, `TotalPremium`, `SumInsured` etc).
+![Corrilation matrix between key numeric features](figures/correlation_matrix.png)
+  - The correlation matrix revealed strong associations between TotalPremium and SumInsured, with weak-to-moderate correlations with TotalClaims.
+- Explored trends of claims vs. premiums by PostalCode.
+- Visualized monthly trends using `TransactionMonth`.
+![Monthly trends in TotalPremium and Claims](figures/monthly_trends_in_premium_and_claims.png)
+  - Monthly line plots showed seasonal patterns, including peaks and troughs in both premiums and claims. Actually, the premium ammounts are increasing, and the claim decreasing eventhough it was high on 2014-10 to 2015-04.
+
+- Analyzed trends across provinces and postal codes.
+![Trends by Province](figures/total_premium_and_claims_by_province.png)
+  - Bar plots of premium and claims across provinces uncovered regional imbalances, particularly in Gauteng, indicates larger loss since higer claims thatn premium. However in Mpumanlanga and Limpopo there is profit.
+- Compared premiums and claims across CoverType and Vehicle make.
+![Top 10 Cover types by avg claims](figures/top_10_cover_types_by_average_claim.png)
+  - Factory filtered sound and Other elctronic equipment cover type claims the most among all.
+![Top 30 Vehicle makes by their claim](figures/top_30_vehicle_makes_by_average_claim.png)
+   - Vehicle make analysis highlighted brands associated with higher average claims, useful for underwriting adjustments. the highest claim is found by SUZUKI
+
+##### 🔍 Summary on Visualizations
+- **Histograms** for numerical features like `TotalPremium`, `TotalClaims`, and `CustomValueEstimate` to examine distribution shapes and potential skewness.
+- **Bar plots** for categorical features such as `Gender`, `Province`, and `VehicleType` to explore frequency distributions.
+- **Box plots** for identifying outliers in financial variables in claim severity and frequency.
+- **Loss Ratio Analysis**: Visualized loss ratios (`TotalClaims` / `TotalPremium`) grouped by `Province` to identify risk-heavy regions.
+  - etc
+
+📂 Output: All plots are saved in the `figures/` directory.
 
 ---
-
-## 📈 Next Steps
-- Conduct EDA visualizations (histograms, boxplots, barplots)
-- Calculate and visualize Loss Ratio patterns
-- Analyze outliers and temporal trends in claim severity and frequency
-
+## 📌 Next Steps
+- Implement DVC version control (Task 2).
+- Perform hypothesis testing across demographic and regional variables (Task 3).
+- Build predictive models for premium optimization and claim forecasting (Task 4).
 ---
 
-## 🚧 In Progress
-- EDA notebooks per domain (e.g., geography, vehicle, financials)
-- DVC versioning (Task 2)
-- Hypothesis testing (Task 3)
-- Predictive modeling (Task 4)
-
----
-
-```
 
