@@ -8,8 +8,9 @@
 This project focuses on analyzing and modeling insurance policy and claim data for risk evaluation and premium optimization. The dataset comprises over 1 million rows from an insurance portfolio with features including vehicle characteristics, policy details, and financials (claims, premiums). The goal is to explore risk drivers and build predictive models for smarter pricing and segmentation.
 - Generally, This project investigates patterns of risk and profitability in a large insurance dataset. We aim to understand customer segments, risk factors, and develop data-driven pricing strategies using EDA, hypothesis testing, and predictive modeling.
 ---
-## 🏗️ Project Setup
-### Repo Structure
+## 🏗️1. Project Setup and EDA
+* Branch created: `task1`
+#### Repo/Project Structure
 
 insurance-analytics-kaim-week3/
 ├── src/
@@ -33,7 +34,6 @@ insurance-analytics-kaim-week3/
 - DVC (for data versioning)
 - PyTest (for testing)
 - GitHub Actions (CI/CD)
----
 
 ### ✅ GitHub Setup
 - Created a structured GitHub repository with modular code organization.
@@ -110,10 +110,63 @@ Heere are missed number of rows for each columns:
 📂 Output: All plots are saved in the `figures/` directory.
 
 ---
+## ✅2. Data Versioning with DVC
+To establish a **reproducible and auditable data pipeline** using **Data Version Control (DVC)**, enabling us to version large data files independent of Git and maintain compliance with industry standards.
+
+**📁 Project Setup:**
+
+* Branch created: `task2`
+* Merged all changes from `task1` for continuity.
+
+
+ **DVC Initialized**:
+* `dvc init` created the `.dvc/` directory and tracking config files.
+* DVC was initialized in the project using `dvc init`.
+* `.dvc/` directory and `.dvcignore` file generated and committed.
+  * make sure dvc is already installed using `pip install dvc`
+
+**🗃️ Remote Storage:**
+
+* Local remote storage created by:
+
+  ```bash
+  mkdir ../dvc-storage
+  ```
+* Once `../dvc-storage` created and add it as the default remote via:
+
+  ```bash
+  dvc remote add -d localstorage ../dvc-storage
+  ```
+
+* The large file `MachineLearningRating_v3.txt` was excluded from Git in `.gitignore`, but tracked using DVC:
+
+  ```bash
+  dvc add data/raw/MachineLearningRating_v3.txt
+  ```
+
+* This generated `MachineLearningRating_v3.txt.dvc`, which is committed to Git as:
+  ```bash
+  git add data/raw/MachineLearningRating_v3.txt.dvc
+  git commit -m "Track raw dataset with DVC"
+  ```
+**Versioning Achieved**:
+
+  * Dataset is now versioned separately from the codebase.
+  * Enables full reproducibility for future model audits and updates.
+
+  * *DVC metadata file size: 529MB tracked via MD5 hash `f6b7009b68ae21372b7deca9307fbb23`*
+
+  * *Data stored locally in `../dvc-storage`.*
+
+**Finally🚀, Data Push:**
+
+* Data successfully pushed to local DVC remote via:
+
+  ```bash
+  dvc push
+  ```
+---
 ## 📌 Next Steps
-- Implement DVC version control (Task 2).
 - Perform hypothesis testing across demographic and regional variables (Task 3).
 - Build predictive models for premium optimization and claim forecasting (Task 4).
----
-
 
