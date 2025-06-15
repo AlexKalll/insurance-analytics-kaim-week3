@@ -1,7 +1,4 @@
-
-
-
-# Insurance Analytics | Machine Learning Project
+# End-to-End Insurance Risk Analytics & Predictive Modeling | ML Project
 
 ### 📘 Project Overview
 
