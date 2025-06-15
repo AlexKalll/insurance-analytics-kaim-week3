@@ -3,7 +3,7 @@
 
 # Insurance Analytics | Machine Learning Project
 
-## 📘 Project Overview
+### 📘 Project Overview
 
 This project focuses on analyzing and modeling insurance policy and claim data for risk evaluation and premium optimization. The dataset comprises over 1 million rows from an insurance portfolio with features including vehicle characteristics, policy details, and financials (claims, premiums). The goal is to explore risk drivers and build predictive models for smarter pricing and segmentation.
 - Generally, This project investigates patterns of risk and profitability in a large insurance dataset. We aim to understand customer segments, risk factors, and develop data-driven pricing strategies using EDA, hypothesis testing, and predictive modeling.
@@ -11,23 +11,23 @@ This project focuses on analyzing and modeling insurance policy and claim data f
 ## 🏗️1. Project Setup and EDA
 * Branch created: `task1`
 #### Repo/Project Structure
-
+```bash
 insurance-analytics-kaim-week3/
-├── src/
-├── figures/
-├── scripts/
-├── notebooks/
-├── data/
-│   ├── raw/
-│   └── processed/
-├── tests/
-├── .github/workflows/
-├── config/
-├── README
-├── requirements.txt
-├── .gitignore
-
-### Tech Stack - Tools Used
+    ├── src/
+    ├── figures/
+    ├── scripts/
+    ├── notebooks/
+    ├── data/
+    │   ├── raw/
+    │   └── processed/
+    ├── tests/
+    ├── .github/workflows/
+    ├── config/
+    ├── README
+    ├── requirements.txt
+    ├── .gitignore
+```
+#### Tech Stack - Tools Used
 - Python 3.11+
 - Pandas, NumPy, Seaborn, Matplotlib
 - Scikit-learn, XGBoost, LIME
