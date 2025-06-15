@@ -162,7 +162,14 @@ To establish a **reproducible and auditable data pipeline** using **Data Version
   ```bash
   dvc push
   ```
----
+**📦(Usage) Reproducibility with DVC**
+* To download the dataset from the local DVC remote (e.g., if you've cloned the repo):
+
+  ```bash
+  dvc pull
+  ```
+
+--- 
 ## 📌 Next Steps
 - Perform hypothesis testing across demographic and regional variables (Task 3).
 - Build predictive models for premium optimization and claim forecasting (Task 4).
