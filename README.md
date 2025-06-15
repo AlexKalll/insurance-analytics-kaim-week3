@@ -9,7 +9,7 @@ This project focuses on analyzing and modeling insurance policy and claim data f
 - Generally, This project investigates patterns of risk and profitability in a large insurance dataset. We aim to understand customer segments, risk factors, and develop data-driven pricing strategies using EDA, hypothesis testing, and predictive modeling.
 ---
 ## 🏗️1. Project Setup and EDA
-* Branch created: `task1`
+* Branch created: `task1` exclusively for task one.
 #### Repo/Project Structure
 ```bash
 insurance-analytics-kaim-week3/
