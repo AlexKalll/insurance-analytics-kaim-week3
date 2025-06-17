@@ -209,6 +209,63 @@ Two key insights were visualized:
 
 ---
 
-## 📌 Next Steps
-- Build predictive models for premium optimization and claim forecasting (Task 4).
+Great! Here's the **README section** to document your work for **Task 4 – Predictive Modeling & Risk Pricing**. Please paste this into your README under a new section.
+
+---
+
+## 🤖 4. Predictive Modeling & Risk-Based Pricing
+
+To improve profitability and enable dynamic pricing, we built ML models to predict **Claim Severity** for policies with a claim. This allows risk-adjusted premium recommendations.
+
+**🧪 Modeling Objectives**
+
+* **Target Variable**: `TotalClaims` (only for policies where claims > 0).
+* **Metric**: RMSE and R².
+* **Features**: Geographic, demographic, vehicle specs, policy types, and engineered fields (e.g., `vehicle_age`, `postcode_claim_freq`).
+
+**🛠️ Steps Performed**
+
+**1. Data Preparation**
+
+* Filtered rows where `totalclaims > 0`.
+* Created features:
+
+  * `vehicle_age` = 2015 - `registrationyear`
+  * `postcode_claim_freq` = Mean claim frequency by `postalcode`
+* Encoded `postalcode` using target mean (target encoding).
+* One-hot encoded string categoricals.
+* Applied `np.log1p()` on target to stabilize variance.
+* Final train-test split (80/20).
+
+**2. Models Trained**
+
+* Linear Regression
+* Random Forest Regressor
+* XGBoost Regressor
+
+**3. Evaluation**
+
+| Model             | RMSE (Rand) | R² Score   |
+| ----------------- | ----------- | ---------- |
+| Linear Regression | *\[value]*  | *\[value]* |
+| Random Forest     | *\[value]*  | *\[value]* |
+| XGBoost           | *\[value]*  | *\[value]* |
+
+
+**4. Model Interpretability using LIME**
+
+* LIME used for the best model (XGBoost).
+* Sampled predictions and visualized explanations for top contributing features.
+
+📊 Top Features:
+
+* `suminsured`, `vehicle_age`, `postalcode_encoded`, `province_Gauteng`, etc.
+
+**🧠 Business Insight**
+
+* Predictive models enable **proactive risk pricing**.
+* LIME reveals transparent drivers of large claims.
+* Postcode-based and vehicle-age based price adjustments recommended.
+
+---
 
