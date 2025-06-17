@@ -245,9 +245,7 @@ To improve profitability and enable dynamic pricing, we built ML models to predi
 
 **3. Evaluation**
 
-
 **4. Model Interpretability using LIME**
-
 * LIME used for the best model (XGBoost).
 * Sampled predictions and visualized explanations for top contributing features.
 
