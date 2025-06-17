@@ -245,12 +245,6 @@ To improve profitability and enable dynamic pricing, we built ML models to predi
 
 **3. Evaluation**
 
-| Model             | RMSE (Rand) | R² Score   |
-| ----------------- | ----------- | ---------- |
-| Linear Regression | *\[value]*  | *\[value]* |
-| Random Forest     | *\[value]*  | *\[value]* |
-| XGBoost           | *\[value]*  | *\[value]* |
-
 
 **4. Model Interpretability using LIME**
 
