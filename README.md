@@ -168,9 +168,47 @@ To establish a **reproducible and auditable data pipeline** using **Data Version
   ```bash
   dvc pull
   ```
+---
 
---- 
+## 🧪 3. Hypothesis Testing – Risk Driver Analysis
+
+To statistically validate or reject assumptions about **key risk drivers**, we conducted a series of **A/B hypothesis tests** focusing on *claim frequency*, *claim severity*, and *profit margin*. This lays the foundation for our segmentation strategy.
+
+**🧮 Metrics Used**
+
+* **Claim Frequency**: Proportion of policies with at least one claim.
+* **Claim Severity**: Average claim amount (for policies that claimed).
+* **Margin**: TotalPremium − TotalClaims.
+
+**📊 Statistical Tests Applied**
+
+* **Chi-Squared Tests** for categorical comparisons (e.g., claim rates by province or gender).
+* **T-Tests** for numerical comparisons (e.g., severity and margin between groups).
+* **FDR Correction** applied for multiple hypothesis tests.
+
+**✅ Hypotheses Evaluated**
+
+| Hypothesis                                                                 | Metric                      | Result                 |
+| -------------------------------------------------------------------------- | --------------------------- | ---------------------- |
+| H₀: No risk differences across **provinces** (Gauteng vs. KwaZulu-Natal)   | Frequency & Severity        | ❌ Rejected             |
+| H₀: No risk/margin differences across **postal zones** (High vs. Low Risk) | Frequency, Severity, Margin | ✅ Partially Rejected   |
+| H₀: No **margin** difference between **zones**                             | Margin                      | ❌ Rejected             |
+| H₀: No risk difference between **genders** (Female vs. Male)               | Frequency & Severity        | ❌ Rejected (Freq only) |
+
+**📈 Plots**
+
+Two key insights were visualized:
+
+* `Claim Frequency by Province`: highlights regional variation in risk.
+* `Margin by Gender`: shows profitability differences.
+**🧠 Key Insights**
+
+* Gauteng had significantly higher claim frequency and severity — may justify premium uplift.
+* High-risk postcodes correlated with poor margins — opportunity for rate adjustment.
+* Female policies showed higher frequency but similar severity — data imbalance noted.
+
+---
+
 ## 📌 Next Steps
-- Perform hypothesis testing across demographic and regional variables (Task 3).
 - Build predictive models for premium optimization and claim forecasting (Task 4).
 
