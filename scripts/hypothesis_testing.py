@@ -7,7 +7,6 @@ import os
 class RiskHypothesisTester:
     def __init__(self, df):
         self.data = df.copy()
-        os.makedirs("reports", exist_ok=True)
         self.data = self.data[(self.data['TotalPremium'] > 0) & (self.data['TotalClaims'] >= 0)]
         self.data['has_claim'] = self.data['TotalClaims'] > 0
         self.data['margin'] = self.data['TotalPremium'] - self.data['TotalClaims']
@@ -60,6 +59,4 @@ class RiskHypothesisTester:
             results[i]['p_value_adj'] = pval
 
         results_df = pd.DataFrame(results)
-        results_df.to_csv("reports/risk_hypothesis_results.csv", index=False)
-        print("Results saved to reports/risk_hypothesis_results.csv")
         return results_df
